@@ -1,0 +1,22 @@
+# Docker Compose file
+# Please refer to linuxcode/code-server for more compose file options
+
+version: "2.1"
+services:
+  openvscode-server:
+    image: lobr266238/code-server_runner
+    container_name: code-server 
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=American/Denver
+      - PASSWORD=Password1234
+      - SUDO_PASSWORD=Password1234
+    volumes:
+      - vscode-config:/config
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+
+volumes:
+  vscode-config:
