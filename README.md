@@ -4,12 +4,41 @@ A simple project based from the LinuxServer team and the docker image linuxserve
 
 ---
 
-**Current Supported Programing Languages**  
+<div style="display: flex; flex-direction: row; padding:2rem; justify-content:center; align-items:center;">
+  <div style="width:50%;">
+
+---
+
+<br>
+
+## TOC
+
+- [Pulling From DockerHub](#pulling-from-dockerhub)
+
+- [Building Docker Image](#building-image)
+
+- [Web Routing & Information](#web-routing--information)
+
+<br>
+
+---
+
+  </div>
+  <div style="width:50%; padding-left:3rem;">
+
+## Current Language Support
 1. Java  
 2. JavaScript  (node)  
 3. C / C++  
 4. C#  
 5. Python 3.10  
+
+  </div>
+</div>
+
+---
+
+<br><br>
 
 ## Pulling from DockerHub
 
@@ -59,11 +88,40 @@ In order to build from the `Dockerfile` please follow these steps:
 
    > Notice the `-d` option. This tells docker to run the previous commands detached from the terminal
 
-## Web & ReverseProxy Info
+## Web Routing & Information
 
 By default the image runs on _port:_ `8443`  
 You can access it on the machine running the container by going to:  
 ```https://localhost:8443```
 
-I would _NOT_ recomend you change this port  
-Instead set up a reverse proxy that connects to the local machine over _port:_ `80`, or even better, _port:_ `443`
+The port can be changed by modifying the `docker-compose.yml` script. Use the examples below to see how:
+
+<div style="display: flex; flex-direction: row; padding-top:2rem;justify-content:center; align-items:center;padding-bottom:2rem;">
+  <div style="width:50%; padding-right:1rem;">
+
+```dockerfile
+# This section shows the original Code
+
+ports:
+    - 8443:8443
+
+# To change the port, you only have to
+# focuse on this section
+```
+
+  </div>
+  <div style="width:50%; padding-left:1rem;">
+
+```dockerfile
+# This section shows the modified Code
+# that changes the port you would enter
+# into your browser
+
+ports:
+    - 8888:8443
+
+# The section before the `:` determins the *Host* port
+```
+
+  </div>
+</div>
