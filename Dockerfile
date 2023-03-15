@@ -7,8 +7,9 @@ USER root
 
 # Updates, upgrades and then installs primary code-running dependencies
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
+    apt-get upgrade -y
+
+RUN apt-get install -y \
     python3 python3-dev python3-pip \
     gcc g++ build-essential \
     openjdk-17-jdk openjdk-17-jre \
